@@ -41,16 +41,30 @@ covid_data_long |>
   ggplot(aes(x = date, y = count, color = state)) + geom_line()
 ```
 
-In this plot, the number of cases vs the date is displayed with each state being a different color. By color alone it is difficult to tell which state is which though. Some trends I noticed are that the states with the most cases started having more cases earlier and that pretty much all the states start to spike around December. 
+In this plot, the number of cases vs the date is displayed with each state being a different color. However the colors are so similar that it is difficult to tell which state is which. Some trends I noticed are that the states with the most cases started having more cases earlier and that pretty much all the states start to spike around December. 
 
 2. Are there any conclusions you can draw?
 
-From the graph you can tell which states have the most cases however it would be hard to draw conclusions based off this graph alone when there are other factors affecting the data. Furthermore because the graph shows all 50 states it is hard to tell which color is actually which state. 
+From the graph you can tell which states have the most number of cases however it would be hard to draw further conclusions such as the rate or percentage of cases based off this particular graph alone when there are other factors affecting the data. 
 
 3. What were you not able to do due to not having the R knowledge?
 
-I wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn't sure how to.  
+I wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn't sure how to combine the data to do that.  
 
 4. What other data would be useful to better understand this data?
 
-I think gendr and/or age would be helpful for understanding and drawing more conclusions about the data.
+I think gender and/or age would be helpful for understanding and drawing more conclusions about the data.
+
+more graphs 
+```{r}
+covid_data_long |> 
+  filter(state_name == "Connecticut") |> 
+  filter(race != "Total") |> 
+  ggplot(aes(x = count_type, y = count, color = race)) + geom_col()
+```
+```{r}
+covid_data_long |> 
+  filter(state_name == "Connecticut") |> 
+  filter(race != "Total") |> 
+  ggplot(aes(x = count_type, fill = race, weight = count)) + geom_bar(position = "fill")
+```

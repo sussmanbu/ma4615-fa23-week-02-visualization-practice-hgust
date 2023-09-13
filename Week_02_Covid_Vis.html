@@ -160,19 +160,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>In this plot, the number of cases vs the date is displayed with each state being a different color. By color alone it is difficult to tell which state is which though. Some trends I noticed are that the states with the most cases started having more cases earlier and that pretty much all the states start to spike around December.</p>
+<p>In this plot, the number of cases vs the date is displayed with each state being a different color. However the colors are so similar that it is difficult to tell which state is which. Some trends I noticed are that the states with the most cases started having more cases earlier and that pretty much all the states start to spike around December.</p>
 <ol start="2" type="1">
 <li>Are there any conclusions you can draw?</li>
 </ol>
-<p>From the graph you can tell which states have the most cases however it would be hard to draw conclusions based off this graph alone when there are other factors affecting the data. Furthermore because the graph shows all 50 states it is hard to tell which color is actually which state.</p>
+<p>From the graph you can tell which states have the most number of cases however it would be hard to draw further conclusions such as the rate or percentage of cases based off this particular graph alone when there are other factors affecting the data.</p>
 <ol start="3" type="1">
 <li>What were you not able to do due to not having the R knowledge?</li>
 </ol>
-<p>I wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn’t sure how to.</p>
+<p>I wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn’t sure how to combine the data to do that.</p>
 <ol start="4" type="1">
 <li>What other data would be useful to better understand this data?</li>
 </ol>
-<p>I think gendr and/or age would be helpful for understanding and drawing more conclusions about the data.</p>
+<p>I think gender and/or age would be helpful for understanding and drawing more conclusions about the data.</p>
+<p>more graphs</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>covid_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Connecticut"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(race <span class="sc">!=</span> <span class="st">"Total"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> count_type, <span class="at">y =</span> count, <span class="at">color =</span> race)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>covid_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Connecticut"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(race <span class="sc">!=</span> <span class="st">"Total"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> count_type, <span class="at">fill =</span> race, <span class="at">weight =</span> count)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
