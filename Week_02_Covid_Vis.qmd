@@ -49,7 +49,7 @@ From the graph you can tell which states have the most number of cases however i
 
 3. What were you not able to do due to not having the R knowledge?
 
-I wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn't sure how to combine the data to do that.  
+I thought it might be helpful/easier to understand if the lines on the graph were labeled instead of using a legend but I don't know how to do that. I also wanted to plot average proportion of cases by race vs date but because each race was its own column instead of being one column and each state had its own proportion I wasn't sure how to combine the data to do that.  
 
 4. What other data would be useful to better understand this data?
 
@@ -67,4 +67,5 @@ covid_data_long |>
   filter(state_name == "Connecticut") |> 
   filter(race != "Total") |> 
   ggplot(aes(x = count_type, fill = race, weight = count)) + geom_bar(position = "fill")
+  labs(title = "")
 ```
